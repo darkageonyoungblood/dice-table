@@ -1,15 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "dice-table",
-  "main": "src/index.js",
+  "main": "index.js",
   "compatibility_date": "2026-09-01",
-
-  // Serves everything in ./public. The Worker handles /api/* and /ws,
-  // and falls through to this binding for the client HTML.
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS"
-  },
 
   "durable_objects": {
     "bindings": [
@@ -17,8 +9,6 @@
     ]
   },
 
-  // Legacy migration syntax. Supported by every wrangler 4.x, which makes
-  // it the safer choice for Cloudflare's build runner.
   "migrations": [
     { "tag": "v1", "new_sqlite_classes": ["Table"] }
   ],
