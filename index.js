@@ -54,10 +54,13 @@ function sameSecret(a, b) {
 
 /* ------------------------------------------------------------ rules data */
 
-export const DICE = [4, 6, 8, 10, 12, 20, 100];
+// Not exported. Cloudflare treats every named export of the entry module as an
+// entrypoint or Durable Object class, so only Table and the default handler are
+// exported. Plain data exported here fails deploy validation.
+const DICE = [4, 6, 8, 10, 12, 20, 100];
 
 // 5th edition conditions, with the short version a DM actually needs mid-turn.
-export const CONDITIONS = {
+const CONDITIONS = {
   blinded:       { name: "Blinded",       text: "Cannot see, auto-fails sight checks. Attacks against it have advantage, its attacks have disadvantage." },
   charmed:       { name: "Charmed",       text: "Cannot attack the charmer. The charmer has advantage on social checks with it." },
   deafened:      { name: "Deafened",      text: "Cannot hear, auto-fails hearing checks." },
@@ -75,7 +78,7 @@ export const CONDITIONS = {
 };
 
 // Exhaustion, cumulative: each level includes every level below it.
-export const EXHAUSTION = [
+const EXHAUSTION = [
   "",
   "1. Disadvantage on ability checks.",
   "2. Speed halved.",
@@ -90,7 +93,7 @@ const DEFAULT_STATS = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
 // Every optional system, switched on or off by the DM when the table is made
 // and changeable afterwards in Setup. Off means the controls disappear from
 // both screens; the data stays put so switching back loses nothing.
-export const FEATURES = {
+const FEATURES = {
   initiative:    "Initiative and turn order",
   monsters:      "Monsters and NPCs",
   hp:            "Hit points",
